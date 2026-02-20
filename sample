@@ -1,0 +1,446 @@
+Introducing CUBE
+Citi Universal Business Enablement
+
+A secure AI-powered knowledge and process intelligence layer connecting People, Platforms, and Processes across Citi’s enterprise ecosystem.
+
+CUBE
+Citi Unified Business Engine
+
+A Secure AI-Powered Knowledge & Process Intelligence Platform for Citi
+
+1. Executive Summary
+
+Citi operates at massive scale across technology, operations, risk, compliance, and business functions. While documentation, processes, and tools exist, knowledge is fragmented across multiple platforms such as Jira, Confluence, SharePoint, internal portals, and service catalogs.
+
+Employees frequently face daily friction:
+
+Not knowing which ticket to raise
+
+Not knowing which system owns an application
+
+Not knowing the correct approval workflow
+
+Searching across thousands of documentation pages
+
+Re-routing misfiled requests
+
+Relying on tribal knowledge
+
+CUBE (Citi Unified Business Engine) proposes a secure, internal AI-powered intelligence layer that unifies Citi’s approved knowledge repositories and provides instant, role-aware guidance across people, processes, and platforms.
+
+CUBE does not create new knowledge.
+It intelligently navigates what already exists.
+
+2. Problem Statement
+
+Citi has:
+
+Thousands of internal applications
+
+Hundreds of Jira projects
+
+Multiple service portals
+
+Extensive Confluence documentation
+
+Architecture documents stored across locations
+
+Complex change management workflows
+
+Frequent onboarding of new employees
+
+Current challenges:
+
+Knowledge fragmentation across tools
+
+Repetitive internal questions
+
+Incorrect ticket submissions
+
+Process confusion
+
+Manual triage overhead
+
+Slow onboarding
+
+Dependency on SMEs for basic navigation
+
+Duplicate documentation and outdated SOPs
+
+The issue is not lack of documentation.
+The issue is lack of intelligent navigation.
+
+3. Proposed Solution: CUBE
+
+CUBE is a secure, role-based AI intelligence engine that sits on top of approved internal repositories and enables employees to:
+
+Ask natural language questions
+
+Receive accurate, contextual guidance
+
+Navigate processes correctly
+
+Identify system ownership
+
+Access relevant architecture
+
+Raise correct requests the first time
+
+CUBE functions as an intelligent enterprise navigator.
+
+4. Core Use Cases
+4.1 Intelligent Process Navigation
+
+User asks:
+“How do I request Kibana access?”
+
+CUBE provides:
+
+Correct portal link
+
+Required approvals
+
+Step-by-step instructions
+
+Required fields
+
+Sample template
+
+SLA expectations
+
+Common rejection reasons
+
+Impact:
+
+Reduced misrouted tickets
+
+Faster request completion
+
+Lower operational friction
+
+4.2 Smart Ticket Assistant
+
+Before raising a Jira or service request:
+
+CUBE:
+
+Suggests correct project/queue
+
+Recommends issue type
+
+Auto-fills structured template
+
+Suggests similar past tickets
+
+Warns if wrong category selected
+
+Impact:
+
+Reduced ticket bounce rate
+
+Reduced manual triage
+
+Faster resolution cycles
+
+4.3 Application Ownership & Dependency Resolver
+
+User asks:
+“Who owns Application XYZ?”
+
+CUBE provides:
+
+Application owner
+
+Support group
+
+Escalation matrix
+
+Slack/Teams channel (if available)
+
+Related systems
+
+Change approval workflow
+
+Impact:
+
+Faster issue escalation
+
+Reduced communication loops
+
+Better operational clarity
+
+4.4 Architecture & Knowledge Discovery
+
+User asks:
+“Show architecture for Payments Gateway.”
+
+CUBE:
+
+Retrieves architecture diagrams
+
+Lists dependent systems
+
+Identifies data flows
+
+Highlights criticality level
+
+Links change management guidelines
+
+Impact:
+
+Faster impact assessment
+
+Better release planning
+
+Improved cross-team visibility
+
+4.5 New Joiner Mode
+
+CUBE supports onboarding by:
+
+Explaining acronyms
+
+Clarifying org structure
+
+Providing team responsibilities
+
+Suggesting mandatory training
+
+Guiding first-time request workflows
+
+Impact:
+
+Reduced onboarding time
+
+Reduced dependency on peers
+
+Improved employee experience
+
+4.6 Knowledge Gap Detection
+
+CUBE identifies:
+
+Frequently asked questions with no documented answers
+
+Outdated or conflicting SOPs
+
+Duplicate documentation
+
+Impact:
+
+Continuous documentation improvement
+
+Stronger governance
+
+Reduced compliance risk
+
+5. What CUBE Will Access
+
+CUBE will index and retrieve from:
+
+Approved Confluence spaces
+
+Approved Jira project metadata
+
+Service catalogs
+
+Knowledge Base articles
+
+Architecture documentation
+
+SOP repositories
+
+Internal policy documentation
+
+Application inventory metadata
+
+Access will be:
+
+Role-based
+
+Permission-aware
+
+Identity-integrated
+
+Fully auditable
+
+CUBE does not bypass existing access controls.
+
+If a user does not have access to a document today, CUBE will not expose it.
+
+6. What CUBE Will NOT Access
+
+CUBE will not:
+
+Access or train on customer PII
+
+Access transaction-level banking data
+
+Access confidential regulatory investigations
+
+Access HR personal records
+
+Access live production databases
+
+Expose restricted legal documents
+
+CUBE operates only on approved, documentation-level repositories.
+
+7. Security & Governance Model
+
+Security is foundational.
+
+CUBE will include:
+
+Role-Based Access Control (RBAC)
+
+Identity integration with Citi authentication
+
+Retrieval-Augmented Generation (no raw data training)
+
+Data masking for sensitive fields
+
+Full audit logs of queries
+
+Governance oversight for indexed repositories
+
+Human review for high-risk content
+
+CUBE enhances compliance rather than weakening it.
+
+8. Business Impact
+
+Estimated impact areas:
+
+Productivity Savings
+Even a 5–10 minute daily saving per employee results in significant cost efficiency at enterprise scale.
+
+Reduced Ticket Misrouting
+Lower operational overhead for support teams.
+
+Faster Issue Resolution
+Reduced time to identify ownership and dependencies.
+
+Improved Onboarding
+Accelerated ramp-up for new hires.
+
+Reduced Knowledge Silos
+Less dependency on tribal knowledge.
+
+Improved Governance
+Centralized and auditable knowledge access.
+
+9. Why This Matters to Citi
+
+Citi already manages credit risk, market risk, and operational risk with advanced systems.
+
+However, internal knowledge navigation remains manual and fragmented.
+
+CUBE brings intelligence to internal operations — enabling:
+
+Faster execution
+
+Better governance
+
+Higher employee productivity
+
+Lower operational friction
+
+Enterprise-wide standardization
+
+CUBE is not a chatbot.
+It is a foundational intelligence layer for Citi’s operational ecosystem.
+
+10. Implementation Approach (High-Level)
+
+Phase 1:
+
+Index limited approved Confluence + Service Catalog
+
+Pilot with select technology teams
+
+Phase 2:
+
+Expand to Jira metadata
+
+Add ticket routing intelligence
+
+Phase 3:
+
+Expand enterprise-wide
+
+Enable onboarding mode
+
+Add governance analytics
+
+Low-risk, incremental rollout.
+
+11. Why Judges Should Care
+
+CUBE:
+
+Impacts entire organization
+
+Reduces measurable cost
+
+Improves employee experience
+
+Enhances governance
+
+Is technically feasible
+
+Respects security constraints
+
+Builds long-term enterprise capability
+
+This is a scalable platform — not a one-team tool.
+
+----------------------
+
+
+Quantify the Impact (This Wins Competitions)
+
+Let’s do rough math:
+
+If:
+
+100,000 employees
+
+Save 10 minutes per day
+
+Avg cost per employee $70/hour
+
+10 minutes = ~$12 per day
+100,000 employees = $1.2M per day
+
+Even if 10% adoption:
+= $120,000 per day
+= $30M+ per year productivity gain
+
+Now you're speaking CFO language.
+
+---------------------
+
+What Your AI Would Actually Do
+
+Think beyond Q&A.
+
+1️⃣ Intelligent Process Navigator
+
+Employee types:
+
+“How do I request Kibana access?”
+
+AI responds:
+
+Step-by-step instructions
+
+Direct ServiceNow / Jira link
+
+Required approvals
+
+Sample template
+
+Estimated SLA
+
+Common rejection reasons
