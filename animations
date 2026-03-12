@@ -1,0 +1,173 @@
+can you just provide me the piece of code for react which i should use to create the effect of numbers increasing till final number on page load, itgives effect that data is getting fetched live. Just provide me only that part, complete implementation not required
+
+22:29
+Here's the hook and usage:
+
+jsx
+// Hook
+function useCountUp(target, duration = 1500) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!target) return;
+    let start = 0;
+    const increment = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+    return () => clearInterval(timer);
+  }, [target, duration]);
+
+  return count;
+}
+
+// Usage — one component per number
+function AnimatedNumber({ value, duration = 1500 }) {
+  const count = useCountUp(value, duration);
+  return <span>{count}</span>;
+}
+Then just use it anywhere:
+
+jsx
+<AnimatedNumber value={168} />           // counts 0 → 168
+<AnimatedNumber value={42} duration={1000} />  // faster
+How it works: runs a setInterval every 16ms (~60fps), increments by target/frames each tick, clears itself when it hits the target. The return () => clearInterval(timer) cleanup prevents memory leaks if the component unmounts mid-animation.
+
+also the graphs are getting visible on scroll below the page so i want graphs also to show live loading like, pie chart getting drawn live, line graphs lines getting drawn, bar graph increasing in size and i want all this when person scrolls to that section. so can you please provide only the code for doing this and how to use on my graphs?
+
+22:33
+Here's everything you need:
+
+1. Intersection Observer Hook (triggers when section scrolls into view)
+jsx
+function useInView(threshold = 0.3) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setInView(true); },
+      { threshold }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return [ref, inView];
+}
+2. Animated Progress Hook (0 → 1 over duration, starts only when triggered)
+jsx
+function useAnimatedProgress(trigger, duration = 1200) {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (!trigger) return;
+    let startTime = null;
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const p = Math.min(elapsed / duration, 1);
+      // easeOutCubic for natural deceleration
+      setProgress(1 - Math.pow(1 - p, 3));
+      if (p < 1) requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+  }, [trigger, duration]);
+
+  return progress; // 0.0 → 1.0
+}
+3. How to use on each graph
+Bar Chart — bars grow from 0 to full height
+
+jsx
+function BarChart({ data }) {
+  const [ref, inView] = useInView();
+  const progress = useAnimatedProgress(inView);
+
+  return (
+    <svg ref={ref} width="100%" viewBox="0 0 220 110">
+      {data.map((d, i) => {
+        const fullHeight = (d.value / max) * chartHeight;
+        const animatedHeight = fullHeight * progress; // <-- key line
+        return (
+          <rect
+            key={i}
+            x={x} width={barW} rx="3"
+            height={animatedHeight}
+            y={chartHeight - animatedHeight + paddingTop}
+          />
+        );
+      })}
+    </svg>
+  );
+}
+Line Chart — line draws from left to right using strokeDashoffset
+
+jsx
+function LineChart({ data }) {
+  const [ref, inView] = useInView();
+  const progress = useAnimatedProgress(inView);
+  const pathRef = useRef(null);
+  const [pathLength, setPathLength] = useState(0);
+
+  // get total path length once mounted
+  useEffect(() => {
+    if (pathRef.current) setPathLength(pathRef.current.getTotalLength());
+  }, [data]);
+
+  const drawn = pathLength * progress; // how much to reveal
+
+  return (
+    <svg ref={ref} ...>
+      <polyline
+        ref={pathRef}
+        points={points}
+        fill="none" stroke="#3b82f6" strokeWidth="2.5"
+        strokeDasharray={pathLength}
+        strokeDashoffset={pathLength - drawn} // <-- key line
+      />
+    </svg>
+  );
+}
+Donut Chart — arc grows from 0 to full using strokeDasharray
+
+jsx
+function DonutChart({ data }) {
+  const [ref, inView] = useInView();
+  const progress = useAnimatedProgress(inView);
+
+  // multiply each segment's dash by progress
+  return (
+    <svg ref={ref} ...>
+      {data.map((d, i) => {
+        const fullDash = (d.value / total) * circumference;
+        const animatedDash = fullDash * progress; // <-- key line
+        const gap = circumference - animatedDash;
+        return (
+          <circle
+            key={i}
+            strokeDasharray={`${animatedDash} ${gap}`}
+            strokeDashoffset={-offset * progress}
+            ...
+          />
+        );
+      })}
+    </svg>
+  );
+}
+```
+
+---
+
+### How it all connects
+```
+useInView()          → fires once when element enters viewport
+useAnimatedProgress() → smoothly goes 0→1 using requestAnimationFrame + easeOut
+progress × fullSize  → apply to height / strokeDashoffset / strokeDasharray
+The single progress value (0 to 1) drives everything — multiply it against whatever dimension you want to animate. No library needed.
