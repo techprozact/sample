@@ -1,0 +1,61 @@
+Hi Team,
+
+We have recently enhanced the **CQE Portal** to improve release tracking, reporting accuracy, and overall visibility across LOBs.
+These updates are aimed at enabling better month-wise tracking, structured release categorization, and more flexible data retrieval.
+
+**🔹 Key Enhancements Implemented**
+
+1. **Flexible Data Pull Criteria**
+
+   * Release data can now be fetched using either:
+
+     * **JIRA Fix Version**, or
+     * **JIRA Label**
+   * At least **one of the above fields is mandatory** for the portal to pull release details.
+   * Zephyr execution data will continue to be fetched using the **Zephyr ID**.
+
+2. **Release Timeline Tracking Introduced**
+
+   * The portal now supports capturing:
+
+     * **Release Start Date**
+     * **Release End Date**
+     * **Go-Live Date**
+   * This enhancement will enable **accurate month-wise tracking and reporting of releases**.
+
+3. **Introduction of Sub-LOB Classification**
+
+   * Releases will now be **grouped and displayed based on Sub-LOBs** under respective LOBs.
+   * This will provide **more granular visibility and ownership clarity**.
+
+4. **New Dashboards Added**
+
+   * **Home Dashboard:**
+     Provides a **single-view summary of release status across all LOBs**.
+   * **Releases Dashboard:**
+     Displays **detailed release information LOB-wise**, helping in trend analysis and monitoring.
+
+**🔹 Action Required from All Users**
+
+To ensure accurate tracking and reporting, all users are requested to:
+
+👉 Navigate to the **“Manage Release”** page and update the following details for
+**all Active as well as Archived releases:**
+
+* Release Start Date
+* Release End Date
+* Go-Live Date
+* Sub-LOB Mapping
+* Ensure either **Fix Version or Label** is properly configured
+
+This activity is important to enable **correct historical reporting, monthly metrics generation, and dashboard accuracy**.
+
+**🔹 Timeline**
+
+Kindly complete the above updates at the earliest so that upcoming reports and dashboards reflect correct data.
+
+In case of any questions, issues, or support required, please feel free to reach out.
+
+Thanks & Regards,
+Rajesh
+CQE Team
